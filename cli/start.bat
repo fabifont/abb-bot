@@ -1,1 +1,0 @@
-java -jar "C:\Users\alaut\aliexpress-amici-di-bonus-fabio-auties\cli\target\cli-1.0-SNAPSHOT.jar"
