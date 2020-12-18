@@ -4,7 +4,6 @@ import com.fabifont.aliexpress.config.Config;
 import com.fabifont.aliexpress.config.Settings;
 import com.fabifont.aliexpress.exception.AddressException;
 import com.fabifont.aliexpress.link.Link;
-import com.fabifont.aliexpress.util.Constants;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;

@@ -7,6 +7,7 @@ import com.fabifont.aliexpress.util.FileUtils;
 import com.fabifont.aliexpress.util.Logger;
 import com.fabifont.aliexpress.util.Parser;
 import lombok.Data;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.Validate;
 
 import java.io.File;
@@ -57,8 +58,8 @@ public class Config {
     System.setProperty("webdriver.chrome.args", "--disable-logging");
     System.setProperty("webdriver.chrome.silentOutput", "true");
 
-    var fileAdb = new File(Constants.BASE_PATH, Constants.BAT_NAME);
-    FileUtils.createFileDefaults(fileAdb, getClass(), () -> Config.logger.info("Adb installato: " + Constants.BAT_NAME));
+    var fileAdb = new File(Constants.BASE_PATH, Constants.IP_NAME);
+    FileUtils.createFileDefaults(fileAdb, getClass(), () -> Config.logger.info("Adb installato: " + Constants.IP_NAME));
 
     this.adb = fileAdb.getPath();
 
@@ -69,21 +70,23 @@ public class Config {
       System.exit(0);
     });
 
-    var stopBatFile = new File(Constants.BASE_PATH, Constants.STOP_BAT_NAME);
-    FileUtils.createFileDefaults(stopBatFile, getClass(), () ->
-    {
-      Config.logger.info("stop.bat non trovato, ne ho creata una copia di default in " + stopBatFile.getAbsolutePath());
-      System.exit(0);
-    });
+    if(SystemUtils.IS_OS_WINDOWS) {
+      var stopBatFile = new File(Constants.BASE_PATH, Constants.STOP_BAT_NAME);
+      FileUtils.createFileDefaults(stopBatFile, getClass(), () ->
+      {
+        Config.logger.info("stop.bat non trovato, ne ho creata una copia di default in " + stopBatFile.getAbsolutePath());
+        System.exit(0);
+      });
 
-    this.stopBat = stopBatFile.getPath();
+      this.stopBat = stopBatFile.getPath();
 
-    var startBatFile = new File(Constants.BASE_PATH, Constants.START_BAT_NAME);
-    FileUtils.createFileDefaults(startBatFile, getClass(), () ->
-    {
-      Config.logger.info("start.bat non trovato, ne ho creata una copia di default in " + startBatFile.getAbsolutePath());
-      System.exit(0);
-    });
+      var startBatFile = new File(Constants.BASE_PATH, Constants.START_BAT_NAME);
+      FileUtils.createFileDefaults(startBatFile, getClass(), () ->
+      {
+        Config.logger.info("start.bat non trovato, ne ho creata una copia di default in " + startBatFile.getAbsolutePath());
+        System.exit(0);
+      });
+    }
 
     this.properties = Parser.parseConfig(configFile).orElseThrow(() -> new RuntimeException("The configuration file is corrupted!"));
 

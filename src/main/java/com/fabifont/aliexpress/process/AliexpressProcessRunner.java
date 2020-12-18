@@ -8,6 +8,7 @@ import com.fabifont.aliexpress.util.ChromeUtils;
 import com.fabifont.aliexpress.util.Parser;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +40,8 @@ public class AliexpressProcessRunner implements Runnable {
   public void run() {
     try {
       // Kill chrome and chromedriver
-      ChromeUtils.forceKill(config);
+      if(SystemUtils.IS_OS_WINDOWS)
+        ChromeUtils.forceKill(config);
 
       // New links list without completed links
       var newThreadLinksList = config.getThreadLinksList()

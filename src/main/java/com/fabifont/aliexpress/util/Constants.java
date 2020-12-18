@@ -10,7 +10,7 @@ import java.io.File;
 public class Constants {
   public static final String BASE_PATH = System.getProperty("user.home") + "/aliexpress";
   public static final String DRIVER_NAME = "chromedriver" + (SystemUtils.IS_OS_WINDOWS ? ".exe" : "");
-  public static final String BAT_NAME = "ip.bat";
+  public static final String IP_NAME = "ip." + (SystemUtils.IS_OS_WINDOWS ? "bat" : "sh");
   public static final String CONFIG_NAME = "config.properties";
   public static final String STOP_BAT_NAME = "stop.bat";
   public static final String START_BAT_NAME = "start.bat";

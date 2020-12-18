@@ -10,7 +10,6 @@ import org.openqa.selenium.devtools.Command;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.logging.Level;
 
 
 @UtilityClass
