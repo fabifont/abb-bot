@@ -45,7 +45,7 @@ public class AliexpressProcessRunner implements Runnable {
         ChromeUtils.forceKill(config);
       else {
         try {
-          Process proc = Runtime.getRuntime().exec("~/aliexpress/stop.sh");
+          Process proc = Runtime.getRuntime().exec(System.getProperty("user.home") + "/aliexpress/stop.sh");
           proc.waitFor();
         } catch (IOException e) {
           Config.logger.stackTraceWithMessage("Errore durante il lancio dello script per killare chrome/chromedriver", e);
