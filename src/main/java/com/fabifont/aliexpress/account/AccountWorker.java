@@ -102,7 +102,6 @@ public class AccountWorker implements Callable<Boolean> {
     );
 
     var chromeOptions = new ChromeOptions();
-    //chromeOptions.addArguments("--start-maximized");
     chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
     chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
     chromeOptions.setExperimentalOption("useAutomationExtension", false);
