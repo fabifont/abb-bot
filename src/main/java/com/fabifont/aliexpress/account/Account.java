@@ -4,6 +4,7 @@ import com.fabifont.aliexpress.config.Config;
 import com.fabifont.aliexpress.config.Settings;
 import com.fabifont.aliexpress.exception.AddressException;
 import com.fabifont.aliexpress.link.Link;
+import com.fabifont.aliexpress.util.Constants;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
@@ -198,7 +199,7 @@ public abstract class Account {
         break;
       }
 
-      final String openPath = "//*[@id=\"root\"]/div/div/div[2]/div[4]";
+      final String openPath = Constants.OPEN_LETTER_XPATH;
 
       wait.withTimeout(Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.xpath(openPath)));
       driver.findElement(By.xpath(openPath)).click();

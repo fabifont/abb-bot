@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.SystemUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.Callable;
@@ -42,6 +43,14 @@ public class AliexpressProcessRunner implements Runnable {
       // Kill chrome and chromedriver
       if(SystemUtils.IS_OS_WINDOWS)
         ChromeUtils.forceKill(config);
+      else {
+        try {
+          Process proc = Runtime.getRuntime().exec(System.getProperty("user.home") + "/aliexpress/stop.sh");
+          proc.waitFor();
+        } catch (IOException e) {
+          Config.logger.stackTraceWithMessage("Errore durante il lancio dello script per killare chrome/chromedriver", e);
+        }
+      }
 
       // New links list without completed links
       var newThreadLinksList = config.getThreadLinksList()

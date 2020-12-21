@@ -23,4 +23,5 @@ public class Constants {
   public static final String LEVEL_HARD = "/html/body/div[2]/div/div[2]/div/div/div/div/div[1]/div/div/div[6]/div[2]";
   public static final String SALT = "sal3@ll!m0ne";
   public static final File LOGFILE_NAME = new File(BASE_PATH, "logfile.txt");
+  public static final String OPEN_LETTER_XPATH = "/html/body/div[2]/div/div[2]/div/div/div/div/div[1]/div/div/div[4]/div[2]";
 }
