@@ -3,10 +3,6 @@
 Bot scritto in Java 11 per farmare bonus amici di Aliexpress.
 Supporta Windows e Linux.
 
-## Metodo
-
-Progetto modulare con GUI e CLI mediante tethering usb con dispostivo Android mediante l'utilizzo di adb
-
 ## Setup 
 ##### Sviluppatori:
 Per poter sviluppare su questo branch è necessario:
