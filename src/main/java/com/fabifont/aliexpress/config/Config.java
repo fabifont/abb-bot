@@ -44,7 +44,7 @@ public class Config {
 
   public Config() {
     // Il welcome message non lo sto a scrivere nel log, lo scrivo solo sul terminale
-    System.out.println("# Welcome to the Aliexpress Bot - Version 69420");
+    System.out.println("# Welcome to the Aliexpress Bot - Version 7.0");
     System.out.println("# Developed by Fabifont, Auties00 and thegoldgoat");
 
     Config.logger.info("Caricamento della configurazione in corso...");
@@ -86,6 +86,15 @@ public class Config {
         Config.logger.info("start.bat non trovato, ne ho creata una copia di default in " + startBatFile.getAbsolutePath());
         System.exit(0);
       });
+    } else {
+      var stopBatFile = new File(Constants.BASE_PATH, "stop.sh");
+      FileUtils.createFileDefaults(stopBatFile, getClass(), () ->
+      {
+        Config.logger.info("stop.bat non trovato, ne ho creata una copia di default in " + stopBatFile.getAbsolutePath());
+        System.exit(0);
+      });
+
+      this.stopBat = stopBatFile.getPath();
     }
 
     this.properties = Parser.parseConfig(configFile).orElseThrow(() -> new RuntimeException("The configuration file is corrupted!"));

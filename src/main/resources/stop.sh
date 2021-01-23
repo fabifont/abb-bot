@@ -1,0 +1,3 @@
+killall chrome
+killall chromium
+killall chromedriver
