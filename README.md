@@ -2,6 +2,8 @@
 
 Aliexpress bonus buddies bot - Linux & Windows
 
+# LEGGI TUTTO PRIMA DI INIZIARE
+
 ## Setup 
 ##### Sviluppatori:
 Per poter sviluppare su questo branch è necessario:
@@ -58,7 +60,7 @@ Si consiglia di creare max due o tre accounts aliexpress con indirizzi mail real
    adb shell am broadcast -a android.intent.action.AIRPLANE_MODE
    ```
 
-## Run
+## Run with intelliJ Idea
 1) Apri il progetto con intelliJ Idea
 2) Apri la classe AliexpressApplication
 3) Build -> build project
@@ -88,4 +90,25 @@ user_agent="Mozilla/5.0 (Linux; Android 6.0.1; RedMi Note 5 Build/RB3N5C; wv) Ap
 ```
 14) Run -> run
 
-
+## Run with maven
+1) `mvn clean`
+2) `mvn package`
+3) `java -jar target/abb-bot-1.0-SNAPSHOT.jar`
+4) Tutte le configurazioni presenti nella cartella resources sono di default, quelle utilizzate dall'applicazione vengono salvate nella cartella C:\Users\<Utente>\aliexpress per windows e /home/aliexpress per Linux
+5) SOLO SU LINUX: `chmod +x stop.sh; chmod +x chromedriver; chmod +x ip.sh`
+6) config.properties -> 
+```
+links=[firstlink],[secondlink] // il link in ogni array riceve il primo click, il secondo link nello stesso array riceve il secondo link etc... !i link devono essere tutti diversi
+done_limit=0 // se diverso da 0 si ferma al numero di click effettuati che si ha impostato
+error_limit=0 // se diverso da 0 si ferma al numero di errori generati che si ha impostato
+password=dsf4576sre78#33S239 // password per gli account fake
+adblocker=true
+headless=false
+profile_caching=true
+ship_to=true
+reverse=false
+tg_chatId= // non usare, era una feature che trovi nel branch old
+tg_botToken= // non usare, era una feature che trovi nel branch old
+user_agent="Mozilla/5.0 (Linux; Android 6.0.1; RedMi Note 5 Build/RB3N5C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/68.0.3440.91 Mobile Safari/537.36"
+```
+7) `java -jar target/abb-bot-1.0-SNAPSHOT.jar`
